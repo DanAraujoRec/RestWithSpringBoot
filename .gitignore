@@ -1,17 +1,19 @@
 HELP.md
-target/
+/target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 
 ### STS ###
 .apt_generated
-.classpath
+/.classpath
 .factorypath
-.project
-.settings
-.springBeans
+/.project
+/.settings/
+/.springBeans
 .sts4-cache
+/.gradle/
+/build/
 
 ### IntelliJ IDEA ###
 .idea
