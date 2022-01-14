@@ -1,6 +1,7 @@
 package br.com.dansa.controller;
 
 import br.com.dansa.entity.Person;
+import br.com.dansa.model.PersonModel;
 import br.com.dansa.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,23 +24,23 @@ public class PersonController {
     private PersonService personService;
 
     @GetMapping()
-    public List<Person> findAll() {
+    public List<PersonModel> findAll() {
         return personService.findAll();
     }
 
     @GetMapping("/{id}")
-    public Person findById(@PathVariable Long id) {
+    public PersonModel findById(@PathVariable Long id) {
         return personService.findById(id);
     }
 
     @PostMapping()
-    public Person create(@RequestBody Person person) {
+    public PersonModel create(@RequestBody PersonModel person) {
 
         return personService.create(person);
     }
 
     @PutMapping()
-    public Person update(@RequestBody Person person) {
+    public PersonModel update(@RequestBody PersonModel person) {
         return personService.update(person);
     }
 

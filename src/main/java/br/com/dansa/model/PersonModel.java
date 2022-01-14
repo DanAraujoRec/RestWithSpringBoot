@@ -1,4 +1,4 @@
-package br.com.dansa.entity;
+package br.com.dansa.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,24 +19,12 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Entity
-@Table(name = "tb_pessoa")
-public class Person implements Serializable {
+public class PersonModel implements Serializable {
 
     @EqualsAndHashCode.Include
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
     private Long id;
-
-    @Column(name = "first_name", nullable = false, length = 80)
-    private String firstName;
-
-    @Column(name = "last_name", nullable = false, length = 80)
-    private String lastName;
-
-    @Column(name = "address", nullable = false)
-    private String address;
-
-    @Column(name = "gender", nullable = false, length = 9)
+    private String firstName;    
+    private String lastName;   
+    private String address;  
     private String gender;
 }
