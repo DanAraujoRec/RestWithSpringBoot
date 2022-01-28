@@ -1,27 +1,17 @@
 package br.com.dansa.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import java.io.Serializable;
 
-@Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class PersonModel implements Serializable {
+import org.springframework.hateoas.RepresentationModel;
 
-    @EqualsAndHashCode.Include
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class PersonModel extends RepresentationModel<PersonModel> implements Serializable {
+	private static final long serialVersionUID = 1L;
+		
     private Long id;
     private String firstName;    
     private String lastName;   
