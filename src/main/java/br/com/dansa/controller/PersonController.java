@@ -7,7 +7,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,8 +29,7 @@ public class PersonController {
 
 	@Autowired
 	private PersonService personService;
-
-	@CrossOrigin(origins = {"http://localhost:8080", "http://www.danaraujo.com.br"})
+	
 	@Operation(summary = "Find all person")
 	@GetMapping()
 	public List<PersonModel> findAll() {
@@ -42,8 +40,7 @@ public class PersonController {
 				linkTo(methodOn(PersonController.class).findById(person.getId())).withSelfRel()));	
 		return personModels;
 	}
-
-	@CrossOrigin(origins = "http://localhost:8080")
+	
 	@Operation(summary = "Find a specific person by Your id")
 	@GetMapping("/{id}")
 	public PersonModel findById(@PathVariable Long id) {
