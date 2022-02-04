@@ -1,14 +1,15 @@
 package br.com.dansa.services;
 
-import br.com.dansa.converter.DozerConverter;
-import br.com.dansa.entity.Person;
-import br.com.dansa.exception.PersonNotFoundException;
-import br.com.dansa.model.PersonModel;
-import br.com.dansa.repositories.PersonRepository;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import br.com.dansa.converter.DozerConverter;
+import br.com.dansa.entity.Person;
+import br.com.dansa.exception.BookNotFoundException;
+import br.com.dansa.model.PersonModel;
+import br.com.dansa.repositories.PersonRepository;
 
 @Service
 public class PersonService {
@@ -22,7 +23,7 @@ public class PersonService {
 
     public PersonModel findById(Long id) {
         var entity = repository.findById(id)
-                .orElseThrow(() -> new PersonNotFoundException("No records for this ID"));
+                .orElseThrow(() -> new BookNotFoundException("No records for this ID"));
         return DozerConverter.parseObject(entity, PersonModel.class);
     }
 
@@ -37,7 +38,7 @@ public class PersonService {
     public PersonModel update(PersonModel personModel) {
 
         var entity = repository.findById(personModel.getId())
-                .orElseThrow(() -> new PersonNotFoundException("No records for this ID"));
+                .orElseThrow(() -> new BookNotFoundException("No records for this ID"));
         entity.setFirstName(personModel.getFirstName());
         entity.setLastName(personModel.getLastName());
         entity.setAddress(personModel.getAddress());
@@ -49,7 +50,7 @@ public class PersonService {
     public void delete(Long id) {
 
         Person entity = repository.findById(id)
-                .orElseThrow(() -> new PersonNotFoundException("No records for this ID " + id));
+                .orElseThrow(() -> new BookNotFoundException("No records for this ID " + id));
 
         repository.delete(entity);
     }

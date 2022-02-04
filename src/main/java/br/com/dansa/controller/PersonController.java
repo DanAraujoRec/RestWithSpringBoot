@@ -19,7 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.dansa.entity.Person;
 import br.com.dansa.model.PersonModel;
 import br.com.dansa.services.PersonService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
+@Tag(name = "File Endpoint")
 @RestController
 @RequestMapping("/person")
 public class PersonController {
@@ -27,6 +30,7 @@ public class PersonController {
 	@Autowired
 	private PersonService personService;
 
+	@Operation(summary = "Find all person")
 	@GetMapping()
 	public List<PersonModel> findAll() {
 		
@@ -37,6 +41,7 @@ public class PersonController {
 		return personModels;
 	}
 
+	@Operation(summary = "Find a specific person by Your id")
 	@GetMapping("/{id}")
 	public PersonModel findById(@PathVariable Long id) {
 		PersonModel personModel = personService.findById(id);
@@ -49,6 +54,7 @@ public class PersonController {
 		return personModel;
 	}
 
+	@Operation(summary = "Create a new Person")
 	@PostMapping()
 	public PersonModel create(@RequestBody PersonModel person) {
 
@@ -59,6 +65,7 @@ public class PersonController {
 		return personModel;
 	}
 
+	@Operation(summary = "Update a specific Person")
 	@PutMapping()
 	public PersonModel update(@RequestBody PersonModel person) {
 

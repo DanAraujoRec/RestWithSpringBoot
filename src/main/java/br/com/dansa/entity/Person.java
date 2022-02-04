@@ -22,8 +22,9 @@ import java.io.Serializable;
 @Entity
 @Table(name = "tb_pessoa")
 public class Person implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-    @EqualsAndHashCode.Include
+	@EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
